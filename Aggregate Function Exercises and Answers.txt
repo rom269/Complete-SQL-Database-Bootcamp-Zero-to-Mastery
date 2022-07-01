@@ -51,7 +51,7 @@ SELECT avg( "public"."salaries"."salary" ) AS "Average Salary"
 FROM "public"."salaries";
 
 -- What year was the youngest person born in the company?
-SELECT min( "public"."employees"."birth_date" ) AS "Youngest Birth Date"
+SELECT max( "public"."employees"."birth_date" ) AS "Youngest Birth Date"
 FROM "public"."employees";
 
 -- How many towns are there in france?
@@ -67,5 +67,8 @@ SELECT avg( "public"."country"."lifeexpectancy" ) AS "Average life lifeexpectanc
 from "public"."country";
 
 -- What is the average population for cities in the netherlands?
-SELECT "public"."country"."name" AS "Country Name", avg( "public"."country"."population" ) AS "Average Population"
-from "public"."country";
+SELECT "public"."city"."name" AS "City Name", avg( "public"."city"."population" ) AS "Average Population"
+from "public"."city"
+WHERE "public"."city"."countrycode" = 'NLD'
+GROUP BY "public"."city"."name"
+ORDER By "Average Population"

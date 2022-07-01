@@ -67,8 +67,6 @@ SELECT avg( "public"."country"."lifeexpectancy" ) AS "Average life lifeexpectanc
 from "public"."country";
 
 -- What is the average population for cities in the netherlands?
-SELECT "public"."city"."name" AS "City Name", avg( "public"."city"."population" ) AS "Average Population"
+SELECT avg( "public"."city"."population" ) AS "Average Population in NLD"
 from "public"."city"
 WHERE "public"."city"."countrycode" = 'NLD'
-GROUP BY "public"."city"."name"
-ORDER By "Average Population"
